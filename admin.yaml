@@ -26,3 +26,24 @@ roleRef:
   kind: Role
   name: roboshop-admin
   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::672642514000:role/eksctl-eks-spot-cluster-nodegroup--NodeInstanceRole-5ii6En83lV9D
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - userarn: arn:aws:iam::672642514000:user/kashi
+      username: kashi
+      groups:
+        - roboshop-admin
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-11-09T14:08:55Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1139"
+  uid: 225d255c-6d50-4c4b-abb5-8e98d777abe2
