@@ -30,7 +30,7 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: roboshop-cr
+  name: roboshop-cluster-reader
 rules:
 - apiGroups: ["v1","apps/v1",""]
   resources: ["secrets","nodes","namespaces"]
@@ -40,13 +40,13 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: roboshop-crb
+  name: roboshop-cluster-reader
 subjects:
 - kind: User
   name: kashi
 roleRef:
   kind: ClusterRole
-  name: roboshop-cr
+  name: roboshop-cluster-reader
   apiGroup: rbac.authorization.k8s.io
 
 ---
