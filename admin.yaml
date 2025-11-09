@@ -32,7 +32,7 @@ kind: ClusterRole
 metadata:
   name: roboshop-cr
 rules:
-- apiGroups: ["v1","apps/v1"]
+- apiGroups: ["v1","apps/v1",""]
   resources: ["secrets","nodes","namespaces"]
   verbs: ["get","list","watch"]
 
