@@ -27,6 +27,29 @@ roleRef:
   name: roboshop-admin
   apiGroup: rbac.authorization.k8s.io
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: roboshop-cr
+rules:
+- apiGroups: ["v1","apps/v1"]
+  resources: ["secrets","nodes","namespaces"]
+  verbs: ["get","list","watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: roboshop-crb
+subjects:
+- kind: User
+  name: kashi
+roleRef:
+  kind: ClusterRole
+  name: roboshop-cr
+  apiGroup: rbac.authorization.k8s.io
+
+---
 apiVersion: v1
 data:
   mapRoles: |
